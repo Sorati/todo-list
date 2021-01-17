@@ -1,0 +1,48 @@
+.controls{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  border-top: 3px solid $color-white;
+}
+
+.controls__input{
+  border: none;
+  width: 100%;
+  padding: 10px 15px;
+  background-color: $color-bg-dark;
+  font-size: $font-size-controls;
+  color: $color-text-controls;
+  align-self: stretch;
+  transition: .3s;
+
+  &:focus{
+    outline: none;
+    background-color: $color-bg-light;
+  }
+
+  &::placeholder{
+    color: $color-text-placeholder;
+  }
+}
+
+
+.controls__button{
+  border: none;
+  padding: 10px 15px;
+  align-self: stretch;
+  font: inherit;
+  color: $color-text-controls;
+  cursor: pointer;
+  background-color: transparent;
+  font-size: $font-size-controls;
+  transition: .3s;
+
+  &:focus{
+    outline: none;
+  }
+
+  &:hover{
+    background-color: $color-bg-light;
+  }
+}

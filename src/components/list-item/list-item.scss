@@ -1,0 +1,86 @@
+.list__item{
+  list-style: none;
+  position: relative;
+  padding: 5px 20px;
+  display: flex;
+  min-width: 400px;
+  justify-content: space-between;
+  align-items: center;
+
+  &:before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 3px;
+    width: 80%;
+    border-radius: 3px;
+    background-color: $color-bg-light;
+
+  }
+}
+
+.list__item-control{
+  display: flex;
+}
+
+.list__item-text{
+  width: 100%;
+  font-size: $font-size-controls;
+  &--edit{
+    border: none;
+    //padding: 10px 15px;
+
+    background-color: $color-bg-dark;
+    //font-size: $font-size-controls;
+    color: $color-text-controls;
+    align-self: stretch;
+    transition: .3s;
+
+    &:focus{
+      outline: none;
+      background-color: $color-bg-light;
+    }
+
+    &::placeholder{
+      color: $color-text-placeholder;
+    }
+  }
+}
+
+.list__item-control-delete,
+.list__item-control-edit,
+.list__item-control-accept,
+.list__item-control-cancel{
+  border: none;
+  background-color: transparent;
+  transition: .3s;
+  font-size: $font-size-list-item-controls;
+  padding: 5px;
+  width: 3vmax;
+
+  &:focus{
+    outline: none;
+  }
+
+  &:hover{
+    background-color: $color-bg-light;
+  }
+}
+
+.list__item-control-accept{
+  color: $color-accept;
+}
+
+.list__item-control-cancel{
+  color: $color-cancel
+}
+
+.list__item-control-edit{
+
+}
+
+.list__item-control-delete{
+
+}
