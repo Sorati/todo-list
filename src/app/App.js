@@ -1,18 +1,17 @@
 import './App.scss';
 import Controls from "../components/controls/controls";
 import ListItem from "../components/list-item/list-item";
-import { tacks } from "../mock/tacks"
+import { connect } from 'react-redux'
 
-// import { connect } from 'react-redux'
-
-function App() {
+function App(props) {
+    const {tasks} = props
     return (
         <div className="App">
             <div className="wrapper">
                 <h2 className={'list-header'}>To Do List</h2>
 
                 <ul className="list">
-                    {tacks.map((item) => {
+                    {tasks.map((item) => {
                         return (
                             <ListItem text={item.text} key={item.id}/>
                         )
@@ -25,4 +24,8 @@ function App() {
     );
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+    tasks: state
+})
+
+export default connect(mapStateToProps)(App);

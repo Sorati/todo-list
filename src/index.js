@@ -3,10 +3,20 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './app/App';
 import reportWebVitals from './reportWebVitals';
+import {createStore} from "redux";
+import {Provider} from 'react-redux'
+import tasksReducer from './store/reducer'
+
+const store = createStore(
+    tasksReducer,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+)
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+        <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
