@@ -13,7 +13,7 @@ function App(props) {
                 <ul className="list">
                     {tasks.map((item) => {
                         return (
-                            <ListItem text={item.text} key={item.id}/>
+                            <ListItem text={item.text} id={item.id} key={item.id}/>
                         )
                     })}
                 </ul>

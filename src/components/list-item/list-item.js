@@ -1,37 +1,36 @@
 import React, {useState, useRef} from 'react'
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
+import {deleteTask, editTask} from '../../store/action'
 
-const ListItem = ({text}) => {
+const ListItem = ({text, id, delItem, editItem}) => {
 
     const [isEdit, setIsEdit] = useState(false)
-    const [textContent, setTextContent] = useState(text)
 
     const inputRef = useRef(null)
 
     const handleContentChange = () => {
         setIsEdit(true)
-        console.log('handleContentChange')
     }
 
     const handleContentDelete = () => {
-        console.log('handleContentDelete')
+        delItem(id)
     }
 
     const handleContentAccept = () => {
-        setTextContent(inputRef.current.value)
+        editItem(id, inputRef.current.value)
         setIsEdit(false)
-        console.log('handleContentAccept')
     }
 
     const handleContentCancel = () => {
         setIsEdit(false)
-        console.log('handleContentCancel')
     }
 
     return(
         <li className="list__item">
             {!isEdit ?
                 <>
-                    <span className={'list__item-text'}>{textContent}</span>
+                    <span className={'list__item-text'}>{text}</span>
                     <div className="list__item-control">
                         <button className={'list__item-control-edit'} onClick={handleContentChange}>📝</button>
                         <button className={'list__item-control-delete'} onClick={handleContentDelete}>❌</button>
@@ -39,7 +38,7 @@ const ListItem = ({text}) => {
                 </>
                 :
                 <>
-                    <input className={'list__item-text list__item-text--edit'} type="text" placeholder={'text'} ref={inputRef} defaultValue={textContent}/>
+                    <input className={'list__item-text list__item-text--edit'} type="text" placeholder={'text'} ref={inputRef} defaultValue={text}/>
                     <div className="list__item-control">
                         <button className={'list__item-control-accept'} onClick={handleContentAccept}>✔</button>
                         <button className={'list__item-control-cancel'} onClick={handleContentCancel}>➖</button>
@@ -51,4 +50,11 @@ const ListItem = ({text}) => {
     )
 }
 
-export default ListItem
+const mapDispatchToProps = (dispatch) => {
+    return {
+        delItem: bindActionCreators(deleteTask, dispatch),
+        editItem : bindActionCreators(editTask, dispatch)
+    }
+}
+
+export default connect(()=>({}), mapDispatchToProps)(ListItem)

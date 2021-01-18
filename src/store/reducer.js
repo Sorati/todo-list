@@ -8,26 +8,21 @@ const tasksReducer = (state = tasks, action) => {
                 ...state,
                 {
                     id: action.payload.id,
-                    text: action.payload.text,
-                    isEdit: action.payload.isEdit
+                    text: action.payload.text
                 }
             ]
         }
         case EDIT_TASK: {
-            return [
-                ...state, {
-                    id: action.payload.id,
-                    text: action.payload.text,
-                    isEdit: action.payload.isEdit
+            return [...state].map(task => {
+                if(task.id === action.payload.id){
+                    console.log(task.text)
+                    task.text = action.payload.text
                 }
-            ]
+                return task
+            })
         }
         case DELETE_TASK: {
-            return [
-                ...state, {
-                    id: action.payload.id
-                }
-            ]
+            return [...state].filter(task => task.id !== action.payload.id)
         }
         default: {
             return state
