@@ -1,14 +1,14 @@
 export const tasks = [
     {
         id: 1610914296453,
-        text: '11qqq'
+        text: 'Text 1'
     },
     {
         id: 1610914358755,
-        text: '22www'
+        text: 'Text 2'
     },
     {
         id: 1610914412227,
-        text: '33eee'
+        text: 'Text 3'
     }
 ]
